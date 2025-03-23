@@ -1,49 +1,38 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("✅ Cloud Crypt extension installed.");
-});
+const CLIENT_ID = "205530538210-97ub4gendejoa15h4p5iai65t6kpckea.apps.googleusercontent.com";
+const SCOPES = "https://www.googleapis.com/auth/drive.file";
+const REDIRECT_URI = `https://${chrome.runtime.id}.chromiumapp.org/`;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "detectCloudPlatforms") {
-        detectLoggedInCloudPlatforms().then(sendResponse);
+    if (request.action === "authenticateGoogleDrive") {
+        authenticateGoogleDrive().then(sendResponse);
         return true; // Required for async response
     }
 });
 
-// 🌐 Detect Logged-in Cloud Platforms
-async function detectLoggedInCloudPlatforms() {
-    const platforms = ["Google Drive", "OneDrive", "MediaFire"];
-    const loggedInPlatforms = [];
+// ✅ Authenticate Google Drive Using OAuth2
+async function authenticateGoogleDrive() {
+    return new Promise((resolve, reject) => {
+        const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES)}&prompt=consent`;
 
-    for (const platform of platforms) {
-        try {
-            const isLoggedIn = await checkPlatformLogin(platform);
-            if (isLoggedIn) loggedInPlatforms.push(platform);
-        } catch (error) {
-            console.error(`❌ Error detecting ${platform}:`, error);
-        }
-    }
+        chrome.identity.launchWebAuthFlow({ url: authUrl, interactive: true }, (redirectUrl) => {
+            if (chrome.runtime.lastError || !redirectUrl) {
+                console.error("❌ Google authentication failed:", chrome.runtime.lastError);
+                resolve(null);
+                return;
+            }
 
-    return loggedInPlatforms;
-}
+            // ✅ Extract Access Token from URL
+            const params = new URLSearchParams(new URL(redirectUrl).hash.substring(1));
+            const token = params.get("access_token");
 
-// 🔍 Check If Platform is Logged In
-async function checkPlatformLogin(platform) {
-    return new Promise((resolve) => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.scripting.executeScript({
-                target: { tabId: tabs[0].id },
-                func: (platform) => {
-                    const platformSelectors = {
-                        "Google Drive": 'div[aria-label="Google Account"]',
-                        "OneDrive": 'button[aria-label="Settings"]',
-                        "MediaFire": 'div[id="user-avatar"]'
-                    };
-                    return !!document.querySelector(platformSelectors[platform]);
-                },
-                args: [platform],
-            }, (results) => {
-                resolve(results[0]?.result || false);
-            });
+            if (!token) {
+                console.error("❌ No token found in authentication response.");
+                resolve(null);
+                return;
+            }
+
+            console.log("✅ Google authentication successful");
+            resolve(token);
         });
     });
-};
+}

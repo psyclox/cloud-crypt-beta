@@ -5,27 +5,29 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* Align content to the top */
     background: linear-gradient(135deg, #03357c, #920fc5b7, #032d7c9e);
     margin: 0;
+    height: auto; /* Allow body height to grow with content */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
+
 
 /* Main Container */
 .container {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
     color: white;
     width: 400px;
-    transition: 0.3s ease-in-out;
+    min-height: 450px;  /* Prevents sudden shrinking */
+    max-height: none;   /* Removes height restriction */
+    overflow: visible;  /* Removes the scrollbar */
+    transition: height 0.3s ease-in-out; /* Smooth height change */
 }
 
-.container:hover {
-    transform: scale(1.02);
-}
 
 /* Headings */
 h1 {
@@ -193,8 +195,8 @@ input[type="file"] {
     margin-top: 8px;
     opacity: 0.85;
     padding: 5px;
-    max-height: 80px;
-    overflow-y: auto;
+    max-height: 200px; /* Increased height from 80px to 200px */
+    overflow-y: auto; /* Keeps scrolling for overflow */
 }
 
 #fileList li {
@@ -248,11 +250,11 @@ input[type="file"] {
 /* Dropdown Menu */
 .dropdown-menu {
     position: absolute;
-    top: 40px;
-    right: 0;
-    background: rgba(0, 0, 0, 0.678);
+    top: 50px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.85);
     border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     padding: 15px;
     z-index: 1000;
     text-align: left;
@@ -268,6 +270,7 @@ input[type="file"] {
     visibility: visible;
     transform: translateY(0);
 }
+
 
 .dropdown-menu ul {
     list-style: none;
@@ -295,32 +298,50 @@ input[type="file"] {
 
 /* Dark Theme */
 body.dark-theme {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: rgba(50, 50, 50, 0.849); /* Darker background for better contrast */
+    color: #e0e0e0; /* Softer white for text */
 }
 
 .dark-theme .container {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(61, 61, 61, 0); /* Slightly lighter container for contrast */
 }
 
 .dark-theme .file-label {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(70, 70, 70, 0.8); /* Improved contrast for file label */
+    color: #ffffff; /* White text for better readability */
 }
 
 .dark-theme .password-box input {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(70, 70, 70, 0.8); /* Match file label background */
+    color: #ffffff; /* White text for input */
 }
 
 .dark-theme .btn {
-    background: #333;
-    color: #fff;
+    background: #1e88e5; /* Blue button for better visibility */
+    color: #ffffff; /* White text */
 }
 
 .dark-theme .btn:hover {
-    background: #444;
+    background: #1565c0; /* Darker blue on hover */
 }
 
+.dark-theme .encrypt {
+    background: #43a047; /* Green button for encrypt */
+    color: #ffffff;
+}
 
+.dark-theme .encrypt:hover {
+    background: #2e7d32; /* Darker green on hover */
+}
+
+.dark-theme .decrypt {
+    background: #e53935; /* Red button for decrypt */
+    color: #ffffff;
+}
+
+.dark-theme .decrypt:hover {
+    background: #b71c1c; /* Darker red on hover */
+}
 
 /* Password Strength Indicator */
 #passwordStrengthContainer {
