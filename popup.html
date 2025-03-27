@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Crypt - Secure File Encryption</title>
+    <title>Cl0ud Crypt - Secure File Encryption</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container" id="container">
-        <h1>🔐 Cloud Crypt</h1>
+        <h1>
+            <img src="logo.png" alt="Cl0ud Crypt Logo" style="width: 80px; height: 80px; vertical-align: middle;"> 
+            Cl0ud Crypt
+        </h1>
         <p class="subheading">Securely encrypt & decrypt your files with ease</p>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
         <!-- Hamburger Menu -->
         <div class="top-menu" id="hamburgerMenu">
@@ -35,8 +38,8 @@
                     </label>
                 </li>
                 <li class="toggle-item">
-                    <span>Google Drive Account</span>
-                    <button id="manageDriveAccount" class="btn small-btn">Add / Switch</button>
+                    <span>Switch Account</span>
+                    <button id="manageDriveAccount" class="btn small-btn">Flush</button>
                 </li>
             </ul>
         </div>
@@ -59,7 +62,7 @@
                 <span id="strengthText"></span>
             </div>
             <div class="password-box">
-                <input type="password" id="passwordInput" placeholder="Enter a secure password">
+                <input type="password" id="passwordInput" name="password" placeholder="Enter a secure password" autocomplete="current-password">
                 <span class="toggle-icon" id="togglePasswordIcon">
                     <i class="fas fa-eye"></i>
                 </span>
@@ -76,6 +79,7 @@
         <p id="status"></p> 
     </div>
 
+    <!-- Scripts -->
     <script src="popup.js"></script>
     <script src="upload.js"></script>
     <script src="crypto.js"></script>
@@ -83,5 +87,5 @@
     <script src="endecrypt.js"></script>
     <script src="passfield.js"></script>
     <script src="dropdown.js"></script>
-</body>       
-</html>      
+</body>
+</html> 
