@@ -22,45 +22,78 @@ async function deriveKey(password, salt) {
     );
 }
 
-// Encrypt a file using AES-GCM with AES-256
-async function encryptFile(file, password) {
+// Encrypt a file using AES-GCM with AES-256 in chunks
+async function encryptFile(file, password, onProgress) {
     const iv = crypto.getRandomValues(new Uint8Array(12)); // 96-bit IV
     const salt = crypto.getRandomValues(new Uint8Array(16)); // 128-bit salt
     const key = await deriveKey(password, salt);
 
-    const fileBuffer = await file.arrayBuffer();
-    const encryptedData = await crypto.subtle.encrypt(
-        { name: "AES-GCM", iv: iv },
-        key,
-        fileBuffer
-    );
+    const chunkSize = 100 * 1024 * 1024; // 100MB chunks
+    const totalChunks = Math.ceil(file.size / chunkSize);
+    let encryptedChunks = [salt, iv];
 
-    // Concatenate salt + IV + encrypted data
-    const encryptedBlob = new Blob([salt, iv, new Uint8Array(encryptedData)], { type: "application/octet-stream" });
-    return encryptedBlob;
-}
+    for (let i = 0; i < totalChunks; i++) {
+        const chunk = file.slice(i * chunkSize, (i + 1) * chunkSize);
+        const chunkBuffer = await chunk.arrayBuffer();
 
-// Decrypt a file using AES-GCM with AES-256
-async function decryptFile(encryptedFile, password) {
-    const fileBuffer = await encryptedFile.arrayBuffer();
-
-    // Extract salt, IV, and encrypted data
-    const salt = new Uint8Array(fileBuffer.slice(0, 16)); // First 16 bytes
-    const iv = new Uint8Array(fileBuffer.slice(16, 28)); // Next 12 bytes
-    const encryptedData = fileBuffer.slice(28); // Remainder
-
-    const key = await deriveKey(password, salt);
-
-    try {
-        const decryptedData = await crypto.subtle.decrypt(
+        const encryptedChunk = await crypto.subtle.encrypt(
             { name: "AES-GCM", iv: iv },
             key,
-            encryptedData
+            chunkBuffer
         );
 
-        return new Blob([decryptedData], { type: "application/octet-stream" });
+        encryptedChunks.push(new Uint8Array(encryptedChunk));
+
+        // Report progress if callback provided
+        if (onProgress) {
+            const progress = Math.round(((i + 1) / totalChunks) * 100);
+            onProgress(progress);
+        }
+    }
+
+    return new Blob(encryptedChunks, { type: "application/octet-stream" });
+}
+
+// Decrypt a file using AES-GCM with AES-256 in chunks
+async function decryptFile(encryptedFile, password, onProgress) {
+    try {
+        const salt = await readChunk(encryptedFile, 0, 16); // 128-bit salt
+        const iv = await readChunk(encryptedFile, 16, 12); // 96-bit IV
+        const key = await deriveKey(password, salt);
+
+        const chunkSize = 100 * 1024 * 1024; // 100MB chunks
+        let decryptedChunks = [];
+        let offset = 28; // After salt + IV
+        let chunkIndex = 0;
+        const totalChunks = Math.ceil((encryptedFile.size - offset) / chunkSize);
+
+        while (offset < encryptedFile.size) {
+            const chunk = await readChunk(encryptedFile, offset, chunkSize);
+            const decryptedChunk = await crypto.subtle.decrypt(
+                { name: "AES-GCM", iv: iv },
+                key,
+                chunk
+            );
+            decryptedChunks.push(new Uint8Array(decryptedChunk));
+            offset += chunk.byteLength;
+            chunkIndex++;
+
+            // Report progress if callback provided
+            if (onProgress) {
+                const progress = Math.round((offset / encryptedFile.size) * 100);
+                onProgress(progress);
+            }
+        }
+
+        return new Blob(decryptedChunks, { type: "application/octet-stream" });
     } catch (error) {
         console.error("Decryption error:", error);
-        throw new Error("Incorrect password or corrupted file");
+        throw error;
     }
+}
+
+// Helper function to read file chunks
+async function readChunk(file, start, size) {
+    const slice = file.slice(start, start + size);
+    return await new Response(slice).arrayBuffer();
 }

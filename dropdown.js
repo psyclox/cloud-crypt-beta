@@ -1,4 +1,3 @@
-
 // 🌟 Ensure DOM is loaded before running scripts
 document.addEventListener("DOMContentLoaded", function () {
     // ✅ Hamburger Menu Toggle
@@ -35,4 +34,40 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("dark-theme", "disabled");
         }
     });
+
+    // ✅ Handle Google Account Switching
+    const switchAccountBtn = document.getElementById("manageDriveAccount");
+    if (switchAccountBtn) {
+        switchAccountBtn.addEventListener("click", async function(e) {
+            e.stopPropagation();
+            dropdownMenu.classList.remove("show");
+            
+            updateStatus("🔃 Opening Google account switcher...", "info");
+
+            try {
+                // Request account switch
+                const result = await chrome.runtime.sendMessage({
+                    action: "switchGoogleAccount"
+                });
+
+                if (result?.error) {
+                    // Handle error response
+                    updateStatus(`❌ ${result.error}`, "error");
+                    return;
+                }
+
+                if (result?.email) {
+                    // Update the account info display
+                    document.getElementById('accountEmail').textContent = result.email;
+                    updateStatus(`✅ Switched to ${result.email}`, "success");
+                } else {
+                    document.getElementById('accountEmail').textContent = "Log in to your Google account";
+                    updateStatus("✅ Account switched", "success");
+                }
+            } catch (error) {
+                console.error("Account switch error:", error);
+                updateStatus(`❌ Error: ${error.message}`, "error");
+            }
+        });
+    }
 });
