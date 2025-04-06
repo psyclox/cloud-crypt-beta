@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scroll for privacy link
     document.querySelector('a[href="privacy.html"]')?.addEventListener('click', function(e) {
-        if (window.location.pathname.endsWith('popup.html')) {
+        if (window.location.pathname.endsWith('index.html')) {
             e.preventDefault();
             window.open('privacy.html', '_blank');
         }
