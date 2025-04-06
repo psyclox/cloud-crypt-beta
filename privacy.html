@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Cl0ud Crypt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="privacy-header">
+        <div class="header-content">
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: <span id="policy-date"></span></p>
+        </div>
+    </header>
+
+    <div class="privacy-container">
+        <section class="privacy-intro">
+            <h2>Our Commitment to Your Privacy</h2>
+            <p>At Cl0ud Crypt, we believe in transparent, secure data handling. This policy explains what we do (and don't do) with your information.</p>
+        </section>
+
+        <div class="privacy-accordion">
+            <!-- Data Collection -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <i class="fas fa-database"></i> What We Collect
+                </button>
+                <div class="accordion-content">
+                    <h3>Strictly Necessary Data</h3>
+                    <ul>
+                        <li><strong>Google Analytics:</strong> Basic usage metrics provided by Chrome Web Store</li>
+                        <li><strong>Error Reports:</strong> Anonymous crash diagnostics (optional)</li>
+                    </ul>
+                    
+                    <h3>What We Never Collect</h3>
+                    <ul>
+                        <li>Your encryption passwords/keys</li>
+                        <li>Contents of your files</li>
+                        <li>Cloud storage credentials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Encryption Details -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <i class="fas fa-lock"></i> Security Architecture
+                </button>
+                <div class="accordion-content">
+                    <div class="security-flow">
+                        <div class="flow-step">
+                            <div class="step-icon">1</div>
+                            <p>Encryption occurs 100% in your browser</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">2</div>
+                            <p>Keys are derived from your password using PBKDF2</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">3</div>
+                            <p>Encrypted files are temporarily stored during upload</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">4</div>
+                            <p>Temporary files are securely wiped after upload</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Parties -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <i class="fas fa-shield-alt"></i> Third-Party Services
+                </button>
+                <div class="accordion-content">
+                    <h3>Google Drive/Dropbox Integration</h3>
+                    <p>We only request the minimum permissions needed for file uploads. We never access:</p>
+                    <ul>
+                        <li>Your existing cloud files</li>
+                        <li>Account credentials</li>
+                        <li>Metadata beyond upload requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- User Rights -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <i class="fas fa-user-check"></i> Your Rights
+                </button>
+                <div class="accordion-content">
+                    <h3>Complete Control</h3>
+                    <ul>
+                        <li>Revoke extension permissions anytime</li>
+                        <li>Disable error reporting</li>
+                        <li>Export your encrypted files</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section class="privacy-contact">
+            <h2>Questions?</h2>
+            <p>Contact our security team: <a href="mailto:security@cl0udcrypt.com">security@cl0udcrypt.com</a></p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
