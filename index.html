@@ -3,22 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cl0ud Crypt - Advanced File Encryption</title>
+    <link rel="icon" href="icons/logo128.png" type="image/png">
+    <title>Cl0ud Crypt Team - Security Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* New Projects Section Styles */
+        .projects-section {
+            padding: 3rem 0;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .project-icon {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc, white);
+        }
+        
+        .project-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #f59e0b;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Updated About Project Image */
+        .about-image img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+        
+        /* Improved Technical Deep Dive */
+        .tech-accordion {
+            margin-top: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-header {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: #f1f5f9;
+        }
+        
+        .accordion-header.active {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content-inner {
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        /* Contact Section Improvements */
+        .contact-card a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <div class="cursor-follower"></div>
-    <div class="particles-container"></div>
-    
     <header class="parallax-header">
         <div class="header-content">
             <div class="logo-container">
                 <img src="icons/logo.png" alt="cl0udcrypt" class="logo-img" width="80" height="80">
-                <h1 class="logo animate__animated animate__fadeInDown">Cl<span class="logo-highlight">0</span>ud Crypt</h1>
+                <h1 class="logo animate__animated animate__fadeInDown">Cl<span class="logo-highlight">0</span>ud Crypt Team</h1>
             </div>
-            <p class="tagline animate__animated animate__fadeInUp">~Flawless Protection, Limitless Digital Trust</p>
+            <p class="tagline animate__animated animate__fadeInUp">~University Students Passionate About Cybersecurity</p>
             <div class="scroll-indicator animate__animated animate__bounce animate__infinite">
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -28,10 +162,8 @@
     <nav class="sticky-nav">
         <ul>
             <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="#features" class="nav-link"><i class="fas fa-star"></i> Features</a></li>
-            <li><a href="#how-it-works" class="nav-link"><i class="fas fa-cogs"></i> How It Works</a></li>
+            <li><a href="#projects" class="nav-link"><i class="fas fa-code"></i> Projects</a></li>
             <li><a href="#technology" class="nav-link"><i class="fas fa-microchip"></i> Technology</a></li>
-            <li><a href="#testimonials" class="nav-link"><i class="fas fa-quote-left"></i> Testimonials</a></li>
             <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
             <li><a href="privacy.html" class="nav-link"><i class="fas fa-shield-alt"></i> Privacy</a></li>
         </ul>
@@ -39,134 +171,212 @@
     
     <div class="container">
         <section id="about" class="section animate-on-scroll">
-            <h2 class="section-title">About Cl0ud Crypt</h2>
+            <h2 class="section-title">About Our Team</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p class="animate__animated animate__fadeInLeft">Cl0ud Crypt is a cutting-edge file encryption solution designed to protect your sensitive data in the cloud. Our Chrome extension provides robust AES-256 encryption before your files ever leave your device.</p>
-                    <p class="animate__animated animate__fadeInLeft">Developed as a final year project by a team of security enthusiasts, Cl0ud Crypt bridges the gap between convenience and security in cloud storage solutions. With zero-knowledge encryption, we ensure that only you can access your files - not even we can decrypt your data.</p>
+                    <p class="animate__animated animate__fadeInLeft">
+                        We are Cl0ud Crypt, a team of cybersecurity enthusiasts and university students dedicated to creating privacy-focused solutions. Our mission is to bridge the gap between security and usability in everyday digital tools.
+                    </p>
+                    <p class="animate__animated animate__fadeInLeft">
+                        What started as a final year project has evolved into a series of security tools designed to protect user privacy in the cloud era. We believe in transparent, open-source solutions that put users in control of their data.
+                    </p>
                     <div class="cta-button animate__animated animate__fadeInUp">
-                        <a href="#features" class="btn btn-primary">Explore Features <i class="fas fa-arrow-right"></i></a>
+                        <a href="#projects" class="btn btn-primary">View Our Projects <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="about-image animate__animated animate__fadeInRight">
-                    <img src="icons/ext.png" alt="Cloud Crypt in action" class="feature-img">
-                    <div class="image-hover-effect"></div>
+                    <img src="icons/logo.png" alt="Cl0ud Crypt Team" class="feature-img">
                 </div>
             </div>
         </section>
 
-        <section id="how-it-works" class="section animate-on-scroll">
-            <h2 class="section-title">How It Works</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon"><i class="fas fa-file-upload"></i></div>
-                    <h3>Select Files</h3>
-                    <p>User selects files for encryption through our intuitive interface</p>
-                    <div class="step-connector"></div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon"><i class="fas fa-lock"></i></div>
-                    <h3>Local Encryption</h3>
-                    <p>Files are encrypted locally using military-grade AES-256 encryption</p>
-                    <div class="step-connector"></div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <h3>Secure Upload</h3>
-                    <p>Encrypted files are securely uploaded to your cloud storage</p>
-                    <div class="step-connector"></div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-icon"><i class="fas fa-trash"></i></div>
-                    <h3>Automatic Cleanup</h3>
-                    <p>Temporary encrypted files are deleted after successful upload</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="section animate-on-scroll">
-            <h2 class="section-title">Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <i class="fas fa-lock feature-icon"></i>
-                        <div class="icon-pulse"></div>
+        <section id="projects" class="section animate-on-scroll">
+            <h2 class="section-title">Our Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="icons/drive.svg" alt="Google Drive Encryptor">
                     </div>
-                    <h3>AES-256 Encryption</h3>
-                    <p>Industry-standard encryption that protects your files with the same technology used by governments and security experts worldwide.</p>
-                    <div class="feature-hover-content">
-                        <p><strong>Technical Details:</strong> 256-bit key length, 128-bit block size, 14 rounds of encryption</p>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <i class="fas fa-cloud-upload-alt feature-icon"></i>
-                        <div class="icon-pulse"></div>
-                    </div>
-                    <h3>Secure Cloud Upload</h3>
-                    <p>Encrypt files before uploading to Google Drive or Dropbox, ensuring your data remains private even if cloud storage is compromised.</p>
-                    <div class="feature-hover-content">
-                        <p><strong>Supported Services:</strong> Google Drive, OneDrive, Dropbox, Box, and more</p>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <i class="fas fa-key feature-icon"></i>
-                        <div class="icon-pulse"></div>
-                    </div>
-                    <h3>Password Protection</h3>
-                    <p>Your encryption key is derived from your password, which we never store or transmit. Lose the password, lose access - guaranteed privacy.</p>
-                    <div class="feature-hover-content">
-                        <p><strong>Security:</strong> PBKDF2 key derivation with 100,000 iterations</p>
+                    <div class="project-content">
+                        <span class="project-badge">Live</span>
+                        <h3>Cl0udCrypt for Google Drive</h3>
+                        <p>A Chrome extension that provides AES-256 encryption before uploading files to Google Drive. Your data remains private even if cloud storage is compromised.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AES-256</span>
+                            <span class="tech-tag">WebCrypto</span>
+                            <span class="tech-tag">Chrome API</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="download-button">
+                                <div class="docs">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="20"
+                                        height="20"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="css-i6dzq1"
+                                    >
+                                        <path
+                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                        ></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                    Docs
+                                </div>
+                                <div class="download">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                        height="24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="css-i6dzq1"
+                                    >
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <i class="fas fa-user-shield feature-icon"></i>
-                        <div class="icon-pulse"></div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="icons/dropbox.svg" alt="Dropbox Encryptor">
                     </div>
-                    <h3>Zero-Knowledge Architecture</h3>
-                    <p>We never have access to your encryption keys or unencrypted data. Your privacy is mathematically guaranteed.</p>
-                    <div class="feature-hover-content">
-                        <p><strong>Privacy:</strong> End-to-end encryption with client-side key generation</p>
+                    <div class="project-content">
+                        <span class="project-badge">Beta</span>
+                        <h3>Cl0udCrypt for Dropbox</h3>
+                        <p>The same zero-knowledge encryption technology adapted for Dropbox users. End-to-end encryption with client-side key generation.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">PBKDF2</span>
+                            <span class="tech-tag">Dropbox API</span>
+                            <span class="tech-tag">WebAssembly</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="download-button">
+                                <div class="docs">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="20"
+                                        height="20"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="css-i6dzq1"
+                                    >
+                                        <path
+                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 0 0 0 2-2V8z"
+                                        ></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                    Docs
+                                </div>
+                                <div class="download">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                        height="24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="css-i6dzq1"
+                                    >
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <i class="fas fa-bolt feature-icon"></i>
-                        <div class="icon-pulse"></div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="icons/proj3.png" alt="Policy Checker">
                     </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized encryption algorithms provide maximum security without sacrificing performance.</p>
-                    <div class="feature-hover-content">
-                        <p><strong>Performance:</strong> WebAssembly-optimized for 3x faster encryption</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <i class="fas fa-code-branch feature-icon"></i>
-                        <div class="icon-pulse"></div>
-                    </div>
-                    <h3>Open Source</h3>
-                    <p>Transparent codebase that can be audited by security experts worldwide.</p>
-                    <div class="feature-hover-content">
-                        <p><strong>Repository:</strong> Available on GitHub under MIT License</p>
+                    <div class="project-content">
+                        <span class="project-badge">Development</span>
+                        <h3>Policy Checker</h3>
+                        <p>Browser extension that summarizes terms of service and privacy policies, highlighting key points about data collection and user rights.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Browser Extension</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="download-button">
+                                <div class="docs">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="20"
+                                        height="20"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="css-i6dzq1"
+                                    >
+                                        <path
+                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 0 0 0 2-2V8z"
+                                        ></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                    Docs
+                                </div>
+                                <div class="download">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                        height="24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="css-i6dzq1"
+                                    >
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="technology" class="section animate-on-scroll">
-            <h2 class="section-title">Advanced Technology</h2>
+            <h2 class="section-title">Technology Implemented</h2>
             <div class="tech-stack">
                 <div class="tech-item">
                     <div class="tech-icon">
@@ -202,74 +412,48 @@
                 <div class="tech-accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
-                            <i class="fas fa-angle-right"></i> Encryption Process Flow
+                            <span>Encryption Process Flow</span>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p>Our encryption process follows a rigorous security protocol:</p>
-                            <ol>
-                                <li>User selects files and provides password</li>
-                                <li>Password is processed through PBKDF2 with 100,000 iterations</li>
-                                <li>Random salt is generated for each encryption operation</li>
-                                <li>AES-256 GCM encryption is performed with the derived key</li>
-                                <li>Authentication tag and IV are stored with the encrypted file</li>
-                                <li>Encrypted file is uploaded to cloud storage</li>
-                            </ol>
+                            <div class="accordion-content-inner">
+                                <ol>
+                                    <li><strong>File Selection:</strong> User selects files through browser's native file picker</li>
+                                    <li><strong>Key Derivation:</strong> Password processed through PBKDF2-HMAC-SHA256 with 210,000 iterations</li>
+                                    <li><strong>Encryption:</strong> AES-256-GCM with 96-bit IV and 128-bit authentication tag</li>
+                                    <li><strong>Metadata Protection:</strong> File names encrypted separately with different key</li>
+                                    <li><strong>Secure Upload:</strong> Encrypted files transferred via TLS 1.3 to cloud provider</li>
+                                    <li><strong>Cleanup:</strong> Temporary files securely wiped from memory and storage</li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <button class="accordion-header">
-                            <i class="fas fa-angle-right"></i> Security Architecture
+                            <span>Security Architecture</span>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p>The system is designed with multiple layers of security:</p>
-                            <ul>
-                                <li><strong>Client-Side Only:</strong> All cryptographic operations occur in the browser</li>
-                                <li><strong>Zero Knowledge:</strong> No keys or unencrypted data leave the user's device</li>
-                                <li><strong>Memory Protection:</strong> Sensitive data is wiped from memory after use</li>
-                                <li><strong>Temporary Files:</strong> Encrypted temp files are securely deleted</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" class="section animate-on-scroll">
-            <h2 class="section-title">What Users Say</h2>
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p>"Cl0ud Crypt has transformed how we handle sensitive client documents. The peace of mind knowing files are encrypted before they hit the cloud is invaluable."</p>
-                        <div class="testimonial-author">
-                            <strong>Sarah Johnson</strong>
-                            <span>Legal Consultant</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p>"As a healthcare provider, HIPAA compliance is critical. Cl0ud Crypt helps us securely share patient records while maintaining strict privacy standards."</p>
-                        <div class="testimonial-author">
-                            <strong>Dr. Michael Chen</strong>
-                            <span>Medical Director</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p>"For our research team working with sensitive data, Cl0ud Crypt provides the perfect balance of security and convenience. The zero-knowledge architecture is exactly what we needed."</p>
-                        <div class="testimonial-author">
-                            <strong>Prof. Emily Rodriguez</strong>
-                            <span>Research Lead</span>
+                            <div class="accordion-content-inner">
+                                <div class="subtopic-grid">
+                                    <div class="subtopic-card">
+                                        <h4 class="subtopic-title"><i class="fas fa-user-secret"></i> Zero-Knowledge Design</h4>
+                                        <ul>
+                                            <li>Encryption keys never leave user's device</li>
+                                            <li>No server-side component that could be compromised</li>
+                                            <li>Mathematically impossible for us to access user data</li>
+                                        </ul>
+                                    </div>
+                                    <div class="subtopic-card">
+                                        <h4 class="subtopic-title"><i class="fas fa-memory"></i> Memory Protection</h4>
+                                        <ul>
+                                            <li>Sensitive data wiped immediately after use</li>
+                                            <li>Web Workers isolate cryptographic operations</li>
+                                            <li>Secure memory allocation practices</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -277,33 +461,27 @@
         </section>
 
         <section id="contact" class="section animate-on-scroll">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="contact-subtitle">Have questions or feedback? We'd love to hear from you!</p>
+            <h2 class="section-title">Contact Our Team</h2>
+            <p class="contact-subtitle">Have questions about our projects?</p>
             
             <div class="contact-container">
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formsubmit.co/your-email@example.com" method="POST">
-                        <!-- Add a hidden input for the redirect -->
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                    <form id="contactForm" action="https://formsubmit.co/cloudcrypt.team@gmail.com" method="POST">
                         <input type="hidden" name="_captcha" value="false">
-
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
-                            <div class="input-highlight"></div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
-                            <div class="input-highlight"></div>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
-                            <div class="input-highlight"></div>
                         </div>
                         <div class="form-group">
-                            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                            <div class="g-recaptcha" data-sitekey="6Lf2OwwrAAAAAKrnRRHqJOjNrk2OSAwKguv893Li"></div>
                         </div>
                         <button type="submit" class="btn btn-submit">
                             <span>Send Message</span>
@@ -314,38 +492,31 @@
                 <div class="contact-info">
                     <div class="contact-card">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:cloudcrypt.team@gmail.com" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
                         </div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <a href="mailto:cloudcrypt.team@gmail.com">cloudcrypt.team@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>LinkedIn</h3>
-                            <a href="https://www.linkedin.com/in/hashif-h" target="_blank">linkedin.com/in/hashif-h</a>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Karaikal, Puducherry</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/psyclox" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                         <div class="contact-details">
                             <h3>GitHub</h3>
-                            <a href="https://github.com/psyclox" target="_blank">github.com/psyclox</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>University</h3>
+                            <p>Final Year Computer Science Project</p>
                         </div>
                     </div>
                 </div>
@@ -356,71 +527,43 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <h2>Cl<span>0</span>ud Crypt</h2>
-                <p>Your files. Your control. Your privacy.</p>
+                <h2>Cl<span>0</span>udCrypt Team</h2>
+                <p>Student Developers | Security Enthusiasts</p>
             </div>
             <div class="footer-links">
                 <div class="link-group">
-                    <h3>Product</h3>
+                    <h3>Projects</h3>
                     <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#projects">Google Drive Encryptor</a></li>
+                        <li><a href="#projects">Dropbox Encryptor</a></li>
+                        <li><a href="#projects">Policy Checker</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>Resources</h3>
+                    <ul>
                         <li><a href="#technology">Technology</a></li>
-                        <li><a href="#">Download</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <h3>Legal</h3>
-                    <ul>
                         <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">Compliance</a></li>
+                        <li><a href="#">GitHub</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-social">
-                <h3>Connect With Us</h3>
+                <h3>Connect</h3>
                 <div class="social-icons">
                     <a href="https://github.com/psyclox" target="_blank" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/karthikeyaneh" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:karthikeyancsbs@gmail.com" aria-label="Email">
+                    <a href="mailto:cloudcrypt.team@gmail.com" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="#" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-                <div class="newsletter">
-                    <input type="email" placeholder="Your email address">
-                    <button class="btn-newsletter">Subscribe</button>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> Cl0ud Crypt. All rights reserved.</p>
-            <div class="footer-credits">
-                <p>Made with <i class="fas fa-heart"></i> by Security Enthusiasts</p>
-            </div>
+            <p>&copy; <span id="current-year"></span> Cl0udCrypt Team. University Project.</p>
         </div>
     </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

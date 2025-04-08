@@ -3,114 +3,917 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/logo128.png" type="image/png">
     <title>Privacy Policy | Cl0ud Crypt</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Professional Privacy Policy ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-ultralight: #e0e7ff;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --lighter: #ffffff;
+            --gray: #94a3b8;
+            --gray-light: #e2e8f0;
+            --gray-dark: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .privacy-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M30,30 L70,30 L70,70 L30,70 Z" transform="rotate(45 50 50)"/></svg>') repeat;
+            pointer-events: none;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid rgba(255,255,255,0.2);
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+        }
+
+        .privacy-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .privacy-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .privacy-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        .privacy-section {
+            margin-bottom: 3rem;
+            background: var(--lighter);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .privacy-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary-ultralight), white);
+            padding: 1.8rem 2rem;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .section-header:hover {
+            background: linear-gradient(135deg, #e0e7ff, white);
+        }
+
+        .section-header i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-right: 1.5rem;
+            min-width: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .section-header.active i {
+            transform: rotate(90deg);
+            color: var(--primary-dark);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .section-content {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-content-inner {
+            padding: 2rem 0;
+        }
+
+        /* Content Styling */
+        .content-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .content-block h3 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .content-block h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-light);
+            border-radius: 3px;
+        }
+
+        .content-block p {
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .content-block ul, 
+        .content-block ol {
+            padding-left: 1.8rem;
+            margin: 1.2rem 0;
+        }
+
+        .content-block li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .content-block ul li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .content-block strong {
+            color: var(--darker);
+            font-weight: 600;
+        }
+
+        /* Grid Layouts */
+        .subtopic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .subtopic-card {
+            background: var(--lighter);
+            border-radius: 12px;
+            padding: 1.8rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+        }
+
+        .subtopic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .subtopic-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+        }
+
+        .subtopic-title i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            background: var(--primary-ultralight);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Security Flow */
+        .security-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .security-flow::before {
+            content: "";
+            position: absolute;
+            top: 25%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+            z-index: 1;
+        }
+
+        .flow-step {
+            background: var(--lighter);
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 22%;
+            min-width: 200px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-light);
+        }
+
+        .flow-step:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .flow-step h4 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .flow-step p {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 2rem;
+            padding: 0 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Contact Section */
+        .privacy-contact {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), transparent);
+            border-radius: 16px;
+            text-align: center;
+            border: 2px dashed var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .privacy-contact:hover {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), transparent);
+            border-color: var(--primary);
+        }
+
+        .privacy-contact h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .privacy-contact p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .privacy-contact a {
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin: 0 0.3rem;
+        }
+
+        .privacy-contact a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Disclaimer */
+        .disclaimer-box {
+            background: var(--gray-light);
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            border-left: 4px solid var(--danger);
+        }
+
+        .disclaimer-box strong {
+            color: var(--danger);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .privacy-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .privacy-header p {
+                font-size: 1rem;
+            }
+            
+            .security-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .security-flow::before {
+                display: none;
+            }
+            
+            .flow-step {
+                width: 100%;
+                margin-bottom: 1.5rem;
+                max-width: 300px;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+            
+            .section-header {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .privacy-contact {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Back to Home Link */
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .back-to-home:hover {
+            color: var(--primary-dark);
+            transform: translateX(-3px);
+        }
+
+        /* Footer */
+        .privacy-footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--gray-light);
+        }
+    </style>
 </head>
 <body>
     <header class="privacy-header">
         <div class="header-content">
+            <div class="logo-container">
+                <img src="icons/logo128.png" alt="Cl0ud Crypt">
+            </div>
             <h1>Privacy Policy</h1>
             <p>Last Updated: <span id="policy-date"></span></p>
         </div>
     </header>
 
     <div class="privacy-container">
-        <section class="privacy-intro">
-            <h2>Our Commitment to Your Privacy</h2>
-            <p>At Cl0ud Crypt, we believe in transparent, secure data handling. This policy explains what we do (and don't do) with your information.</p>
-        </section>
+        <a href="index.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
 
-        <div class="privacy-accordion">
-            <!-- Data Collection -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <i class="fas fa-database"></i> What We Collect
-                </button>
-                <div class="accordion-content">
-                    <h3>Strictly Necessary Data</h3>
-                    <ul>
-                        <li><strong>Google Analytics:</strong> Basic usage metrics provided by Chrome Web Store</li>
-                        <li><strong>Error Reports:</strong> Anonymous crash diagnostics (optional)</li>
-                    </ul>
+        <!-- Introduction -->
+        <section class="privacy-section">
+            <div class="section-header active">
+                <i class="fas fa-shield-alt"></i>
+                <h2 class="section-title">Introduction</h2>
+            </div>
+            <div class="section-content" style="max-height: 1000px;">
+                <div class="section-content-inner">
+                    <div class="content-block">
+                        <p>Cl0ud Crypt ("we", "us", or "our") operates the Cl0ud Crypt browser extension (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
+                        <p>We use your data solely to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy.</p>
+                    </div>
                     
-                    <h3>What We Never Collect</h3>
-                    <ul>
-                        <li>Your encryption passwords/keys</li>
-                        <li>Contents of your files</li>
-                        <li>Cloud storage credentials</li>
-                    </ul>
+                    <div class="content-block">
+                        <h3>Definitions</h3>
+                        <ul>
+                            <li><strong>Service:</strong> The Cl0ud Crypt browser extension and related services</li>
+                            <li><strong>Personal Data:</strong> Information about a living individual who can be identified</li>
+                            <li><strong>Usage Data:</strong> Automatically collected data about Service use</li>
+                            <li><strong>Cookies:</strong> Small files stored on your device</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Encryption Details -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <i class="fas fa-lock"></i> Security Architecture
-                </button>
-                <div class="accordion-content">
-                    <div class="security-flow">
-                        <div class="flow-step">
-                            <div class="step-icon">1</div>
-                            <p>Encryption occurs 100% in your browser</p>
+        <!-- Data Collection -->
+        <section class="privacy-section">
+            <div class="section-header">
+                <i class="fas fa-database"></i>
+                <h2 class="section-title">Data Collection & Use</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-content-inner">
+                    <div class="content-block">
+                        <h3>Information We Collect</h3>
+                        <div class="subtopic-grid">
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-chart-line"></i> Usage Data</h4>
+                                <ul>
+                                    <li>Browser type and version</li>
+                                    <li>Extension activation timestamps</li>
+                                    <li>Aggregate file processing metrics</li>
+                                    <li>Feature usage statistics</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-bug"></i> Error Data</h4>
+                                <ul>
+                                    <li>Crash reports (optional)</li>
+                                    <li>Stack traces</li>
+                                    <li>Browser environment details</li>
+                                    <li>No file contents or personal data</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div class="step-icon">2</div>
-                            <p>Keys are derived from your password using PBKDF2</p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>What We Never Collect</h3>
+                        <div class="subtopic-grid">
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-key"></i> Cryptographic Data</h4>
+                                <ul>
+                                    <li>Encryption passwords</li>
+                                    <li>Derived encryption keys</li>
+                                    <li>Key derivation parameters</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-file-lock"></i> File Data</h4>
+                                <ul>
+                                    <li>File contents (before/during/after encryption)</li>
+                                    <li>File names or metadata beyond what's required for cloud upload</li>
+                                    <li>Directory structures</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-cloud"></i> Cloud Data</h4>
+                                <ul>
+                                    <li>Cloud service credentials</li>
+                                    <li>Existing cloud storage contents</li>
+                                    <li>Account information beyond OAuth requirements</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div class="step-icon">3</div>
-                            <p>Encrypted files are temporarily stored during upload</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div class="step-icon">4</div>
-                            <p>Temporary files are securely wiped after upload</p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Purpose of Data Collection</h3>
+                        <div class="security-flow">
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                                <h4>Service Improvement</h4>
+                                <p>Identify performance bottlenecks and optimize encryption processes</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-wrench"></i></div>
+                                <h4>Error Resolution</h4>
+                                <p>Diagnose and fix technical issues reported by users</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+                                <h4>Compliance</h4>
+                                <p>Meet Chrome Web Store reporting requirements</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Third Parties -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <i class="fas fa-shield-alt"></i> Third-Party Services
-                </button>
-                <div class="accordion-content">
-                    <h3>Google Drive/Dropbox Integration</h3>
-                    <p>We only request the minimum permissions needed for file uploads. We never access:</p>
-                    <ul>
-                        <li>Your existing cloud files</li>
-                        <li>Account credentials</li>
-                        <li>Metadata beyond upload requirements</li>
-                    </ul>
+        <!-- Security Architecture -->
+        <section class="privacy-section">
+            <div class="section-header">
+                <i class="fas fa-lock"></i>
+                <h2 class="section-title">Security Architecture</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-content-inner">
+                    <div class="content-block">
+                        <h3>End-to-End Encryption Process</h3>
+                        <div class="security-flow">
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-mouse-pointer"></i></div>
+                                <h4>File Selection</h4>
+                                <p>User selects files through browser's native file picker</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-key"></i></div>
+                                <h4>Key Derivation</h4>
+                                <p>PBKDF2-HMAC-SHA256 with 210,000 iterations</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-lock"></i></div>
+                                <h4>Encryption</h4>
+                                <p>AES-256-GCM with 96-bit IV and 128-bit auth tag</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <h4>Secure Transfer</h4>
+                                <p>TLS 1.3 encrypted upload to cloud provider</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Technical Safeguards</h3>
+                        <div class="subtopic-grid">
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-memory"></i> Memory Protection</h4>
+                                <ul>
+                                    <li>Sensitive data wiped from memory after use</li>
+                                    <li>Web Workers for isolated cryptographic operations</li>
+                                    <li>Zero knowledge architecture</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-hdd"></i> Storage Handling</h4>
+                                <ul>
+                                    <li>Temporary files encrypted with separate session keys</li>
+                                    <li>Automatic 24-hour expiration for cached data</li>
+                                    <li>Secure deletion practices</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-code"></i> Code Security</h4>
+                                <ul>
+                                    <li>Regular third-party security audits</li>
+                                    <li>WebAssembly-optimized cryptographic routines</li>
+                                    <li>Content Security Policy enforced</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- User Rights -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <i class="fas fa-user-check"></i> Your Rights
-                </button>
-                <div class="accordion-content">
-                    <h3>Complete Control</h3>
-                    <ul>
-                        <li>Revoke extension permissions anytime</li>
-                        <li>Disable error reporting</li>
-                        <li>Export your encrypted files</li>
-                    </ul>
+        <!-- Third Parties -->
+        <section class="privacy-section">
+            <div class="section-header">
+                <i class="fas fa-users"></i>
+                <h2 class="section-title">Third-Party Services</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-content-inner">
+                    <div class="content-block">
+                        <h3>Cloud Storage Providers</h3>
+                        <div class="subtopic-grid">
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fab fa-google-drive"></i> Google Drive</h4>
+                                <ul>
+                                    <li><strong>Permissions:</strong> files.create, files.update</li>
+                                    <li><strong>Data Accessed:</strong> Only new encrypted files</li>
+                                    <li><strong>OAuth Scopes:</strong> https://www.googleapis.com/auth/drive.file</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fab fa-dropbox"></i> Dropbox</h4>
+                                <ul>
+                                    <li><strong>Permissions:</strong> files.content.write</li>
+                                    <li><strong>Data Accessed:</strong> Only files you explicitly upload</li>
+                                    <li><strong>OAuth Scopes:</strong> files.content.write</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Analytics Services</h3>
+                        <div class="subtopic-grid">
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-chart-pie"></i> Chrome Web Store</h4>
+                                <ul>
+                                    <li>Install/uninstall metrics</li>
+                                    <li>Aggregate usage statistics</li>
+                                    <li>No personal identification</li>
+                                </ul>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-bug"></i> Sentry (Optional)</h4>
+                                <ul>
+                                    <li>Error diagnostics</li>
+                                    <li>Browser environment details</li>
+                                    <li>Disabled by default</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>What We Don't Access</h3>
+                        <ul>
+                            <li><strong>Existing Cloud Files:</strong> We cannot read, modify, or delete any files already in your cloud storage</li>
+                            <li><strong>Account Information:</strong> Beyond basic OAuth requirements (email for authentication)</li>
+                            <li><strong>Metadata:</strong> We don't collect file creation dates, locations, or other non-essential metadata</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
+        <!-- User Rights -->
+        <section class="privacy-section">
+            <div class="section-header">
+                <i class="fas fa-user-shield"></i>
+                <h2 class="section-title">Your Rights & Controls</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-content-inner">
+                    <div class="content-block">
+                        <h3>Data Subject Rights</h3>
+                        <div class="subtopic-grid">
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-eye"></i> Right to Access</h4>
+                                <p>Request all data we've collected about your usage</p>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-trash-alt"></i> Right to Erasure</h4>
+                                <p>Have your usage data permanently deleted</p>
+                            </div>
+                            <div class="subtopic-card">
+                                <h4 class="subtopic-title"><i class="fas fa-download"></i> Right to Portability</h4>
+                                <p>Receive your data in a machine-readable format</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Operational Controls</h3>
+                        <div class="security-flow">
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-toggle-off"></i></div>
+                                <h4>Disable Analytics</h4>
+                                <p>Turn off all data collection in extension settings</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-ban"></i></div>
+                                <h4>Revoke Access</h4>
+                                <p>Remove cloud storage permissions anytime</p>
+                            </div>
+                            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step">
+                                <div class="step-icon"><i class="fas fa-trash"></i></div>
+                                <h4>Complete Removal</h4>
+                                <p>Uninstall to delete all local data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal -->
+        <section class="privacy-section">
+            <div class="section-header">
+                <i class="fas fa-gavel"></i>
+                <h2 class="section-title">Legal Information</h2>
+            </div>
+            <div class="section-content">
+                <div class="section-content-inner">
+                    <div class="content-block">
+                        <h3>Data Protection</h3>
+                        <p>We comply with global data protection regulations including:</p>
+                        <ul>
+                            <li><strong>GDPR:</strong> For European Union users</li>
+                            <li><strong>CCPA:</strong> For California residents</li>
+                            <li><strong>PIPEDA:</strong> For Canadian users</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Limitations of Liability</h3>
+                        <div class="disclaimer-box">
+                            <p><strong>Important:</strong> Cl0ud Crypt is provided "as-is" without warranties of any kind. We shall not be liable for:</p>
+                            <ul>
+                                <li>Data loss due to user error (e.g., forgotten passwords)</li>
+                                <li>Actions or policies of cloud storage providers</li>
+                                <li>Security breaches resulting from compromised user devices</li>
+                                <li>Legal requests for data access we cannot provide (as we don't store decryptable data)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Policy Changes</h3>
+                        <p>We may update this policy and will notify users via:</p>
+                        <ul>
+                            <li>Extension update notifications</li>
+                            <li>Email (for registered users)</li>
+                            <li>Updated timestamp on this page</li>
+                        </ul>
+                        <p>Continued use after changes constitutes acceptance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
         <section class="privacy-contact">
-            <h2>Questions?</h2>
-            <p>Contact our security team: <a href="mailto:security@cl0udcrypt.com">security@cl0udcrypt.com</a></p>
+            <h2>Contact Our Data Protection Officer</h2>
+            <p>For privacy concerns or data requests: <a href="mailto:cloudcrypt.team@gmail.com">security@cl0udcrypt</a></p>
+            <p>We respond to all requests within 72 hours.</p>
         </section>
     </div>
 
-    <script src="script.js"></script>
+    <footer class="privacy-footer">
+        <p>&copy; <span id="current-year"></span> Cl0ud Crypt Team. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date
+            document.getElementById('policy-date').textContent = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Accordion functionality
+            const headers = document.querySelectorAll('.section-header');
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    const content = header.nextElementSibling;
+                    if (header.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // Animate elements on scroll
+            const animateElements = document.querySelectorAll('.subtopic-card, .flow-step');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animateElements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
