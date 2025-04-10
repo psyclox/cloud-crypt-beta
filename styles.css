@@ -300,7 +300,6 @@ body {
     color: var(--primary);
 }
 
-/* Technology Accordion */
 .tech-accordion {
     margin-top: 2rem;
 }
@@ -316,13 +315,66 @@ body {
 }
 
 .accordion-content {
-    transition: max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.accordion-content-inner {
+    padding: 1.5rem;
 }
 
 .tech-details h3 {
     color: var(--primary-dark);
     margin: 2rem 0 1rem;
     font-size: 1.5rem;
+}
+
+.tech-accordion .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tech-accordion .accordion-header:hover {
+    background: #f1f5f9;
+}
+
+.tech-accordion .accordion-header.active {
+    background: #2563eb;
+    color: white;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.tech-accordion .accordion-header i {
+    transition: transform 0.3s ease;
+}
+
+.tech-accordion .accordion-header.active i {
+    transform: rotate(180deg);
+}
+
+.tech-accordion .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+
+.tech-accordion .accordion-content-inner {
+    padding: 1.5rem;
 }
 
 /* Testimonials */
@@ -725,14 +777,13 @@ body {
 }
 
 .accordion-content {
-    background: var(--lighter);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .accordion-content-inner {
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .content-block {
@@ -865,8 +916,8 @@ body {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid #e2e8f0;
-    padding-bottom: 1.5rem; /* Add padding to the bottom */
-    min-height: 400px; /* Increase the minimum height */
+    padding-bottom: 1.5rem; 
+    min-height: 400px; 
 }
 
 .project-card:hover {
@@ -1096,18 +1147,15 @@ body {
     transform: translateY(0);
 }
 
-/* Accessibility improvements */
 [aria-hidden="true"] {
     display: none;
 }
 
-/* Performance optimizations */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -1117,7 +1165,6 @@ img {
     }
 }
 
-/* Holographic effect on hover */
 @keyframes holographic {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }

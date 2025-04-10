@@ -10,11 +10,10 @@ class Cl0udCryptApp {
       
       // Initialize components
       this.setupScrollAnimations();
-      this.setupAccordions();
+      this.setupAllAccordions();
       this.setupSmoothScrolling();
       this.setupFormValidation();
       this.setupPrivacyLink();
-      this.setupTechAccordions(); // Already included here
       
       // Performance optimizations
       this.setupPerformanceOptimizations();
@@ -54,36 +53,67 @@ class Cl0udCryptApp {
       }
     }
   
-    setupAccordions() {
-      const accordionHeaders = document.querySelectorAll('.accordion-header');
+    setupAllAccordions() {
+      // Handle regular accordions
+      document.querySelectorAll('.accordion-item:not(.tech-accordion .accordion-item) .accordion-header').forEach(header => {
+        this.setupSingleAccordion(header);
+      });
+    
+      // Handle tech accordions separately
+      document.querySelectorAll('.tech-accordion .accordion-header').forEach(header => {
+        this.setupSingleAccordion(header, true);
+      });
+    }
+    
+    setupSingleAccordion(header, isTechAccordion = false) {
+      if (header.dataset.initialized) return;
       
-      accordionHeaders.forEach(header => {
-        // Check if already has event listener to prevent duplicates
-        if (!header.dataset.listenerAdded) {
-          header.addEventListener('click', () => {
-            header.classList.toggle('active');
-            const content = header.nextElementSibling;
-            
-            if (header.classList.contains('active')) {
-              content.style.maxHeight = content.scrollHeight + 'px';
-            } else {
-              content.style.maxHeight = 0;
+      const item = header.closest('.accordion-item');
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('i');
+    
+      // Initialize state
+      header.setAttribute('aria-expanded', 'false');
+      content.setAttribute('aria-hidden', 'true');
+      content.style.maxHeight = '0';
+    
+      header.addEventListener('click', () => {
+        const isExpanded = header.getAttribute('aria-expanded') === 'true';
+        
+        // For tech accordions, close others when opening one
+        if (isTechAccordion && !isExpanded) {
+          document.querySelectorAll('.tech-accordion .accordion-item').forEach(otherItem => {
+            if (otherItem !== item) {
+              const otherHeader = otherItem.querySelector('.accordion-header');
+              const otherContent = otherHeader.nextElementSibling;
+              otherHeader.setAttribute('aria-expanded', 'false');
+              otherHeader.classList.remove('active');
+              otherContent.setAttribute('aria-hidden', 'true');
+              otherContent.style.maxHeight = '0';
+              
+              const otherIcon = otherHeader.querySelector('i');
+              if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
             }
-            
-            // Add ARIA attributes for accessibility
-            const isExpanded = header.classList.contains('active');
-            header.setAttribute('aria-expanded', isExpanded);
-            content.setAttribute('aria-hidden', !isExpanded);
           });
-          
-          // Mark as having event listener
-          header.dataset.listenerAdded = 'true';
-          
-          // Initialize ARIA attributes
-          header.setAttribute('aria-expanded', 'false');
-          header.nextElementSibling.setAttribute('aria-hidden', 'true');
+        }
+    
+        // Toggle current item
+        header.setAttribute('aria-expanded', !isExpanded);
+        header.classList.toggle('active');
+        content.setAttribute('aria-hidden', isExpanded);
+        
+        if (!isExpanded) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = '0';
+        }
+        
+        if (icon) {
+          icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
         }
       });
+    
+      header.dataset.initialized = 'true';
     }
   
     setupSmoothScrolling() {
@@ -247,43 +277,14 @@ class Cl0udCryptApp {
       }
     }
   
-    setupTechAccordions() {
-      const techAccordions = document.querySelectorAll('.tech-accordion .accordion-header');
-      techAccordions.forEach(header => {
-        header.addEventListener('click', () => {
-          const item = header.parentElement;
-          const content = header.nextElementSibling;
-          const isOpen = header.classList.contains('active');
-  
-          // Close all first
-          techAccordions.forEach(h => {
-            h.classList.remove('active');
-            h.nextElementSibling.style.maxHeight = '0';
-          });
-  
-          // Open current if it wasn't open
-          if (!isOpen) {
-            header.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + 'px';
-          }
-        });
-      });
-    }
-  
     setupPerformanceOptimizations() {
       // Debounce scroll events
       let scrollTimeout;
       window.addEventListener('scroll', () => {
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          // Handle scroll-based operations here
-        }, 100);
-      });
-      
-      // Preload important resources
-      this.preloadResources();
+      }, 100); // Add missing closing parenthesis and semicolon
     }
-  
+
     preloadResources() {
       const resources = [
         'icons/drive.svg',
@@ -300,6 +301,8 @@ class Cl0udCryptApp {
       });
     }
   }
+
+ 
   
   // Initialize the app when DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
