@@ -1008,6 +1008,65 @@ body {
     transform: translateY(-2px);
 }
 
+.project-card.selected {
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    transform: translateY(-5px);
+}
+
+.project-card.selected:hover {
+    transform: translateY(-5px); /* Maintain the same transform when selected */
+}
+
+/* Project Details Section */
+.project-details-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: var(--lighter);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.project-details-section:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.project-description-content,
+.project-tech-content,
+.project-deepdive-content {
+    margin-bottom: 2rem;
+}
+
+.subtopic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.subtopic-card {
+    background: var(--lighter);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.subtopic-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.subtopic-title {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* Download Button */
 .download-button {
   position: relative;
@@ -1080,6 +1139,253 @@ body {
   100% {
     transform: translateY(0%);
   }
+}
+
+/* Premium Banner Styles */
+.premium-banner {
+    text-align: center;
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    color: white;
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin: 2rem 0 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(74, 0, 224, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: premiumPulse 4s infinite;
+}
+
+.premium-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    transform: rotate(30deg);
+    animation: shine 6s infinite;
+}
+
+.premium-banner p {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.premium-banner i {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.premium-banner i:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.premium-banner i:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+@keyframes premiumPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(74, 0, 224, 0.3);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 15px 40px rgba(74, 0, 224, 0.4);
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(30deg) translate(-30%, -30%);
+    }
+    100% {
+        transform: rotate(30deg) translate(30%, 30%);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Ultra Premium Project Banner */
+.premium-banner {
+    text-align: center;
+    background: linear-gradient(135deg, 
+        #6e0cad 0%, 
+        #8e2de2 30%, 
+        #4a00e0 70%, 
+        #2b00a8 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 
+        0 15px 35px rgba(110, 12, 173, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.1),
+        inset 0 0 15px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: premiumGlow 6s infinite alternate;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.premium-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    animation: diamondShine 8s linear infinite;
+    z-index: 1;
+}
+
+.premium-banner::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        #ff00cc 0%,
+        #3333ff 50%,
+        #00ccff 100%
+    );
+    background-size: 200% 200%;
+    z-index: -1;
+    border-radius: 18px;
+    opacity: 0.7;
+    animation: borderGlow 4s ease infinite;
+}
+
+.premium-banner p {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.premium-banner i {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    animation: float 3s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.premium-banner i:nth-child(1) {
+    animation-delay: 0.2s;
+    color: #ffd700;
+}
+
+.premium-banner i:nth-child(2) {
+    animation-delay: 0.4s;
+    color: #ffffff;
+}
+
+/* Animations */
+@keyframes premiumGlow {
+    0% {
+        box-shadow: 
+            0 15px 35px rgba(110, 12, 173, 0.4),
+            0 5px 15px rgba(0, 0, 0, 0.1),
+            inset 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 25px 45px rgba(110, 12, 173, 0.6),
+            0 10px 25px rgba(0, 0, 0, 0.15),
+            inset 0 0 25px rgba(255, 255, 255, 0.3);
+    }
+}
+
+@keyframes diamondShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.8;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+    50% {
+        transform: translateY(-8px) scale(1.1);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Add subtle particle effects */
+.premium-banner .particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: particleFloat linear infinite;
+    z-index: 1;
+}
+
+@keyframes particleFloat {
+    to {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Responsive Adjustments */

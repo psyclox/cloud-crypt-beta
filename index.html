@@ -189,6 +189,9 @@
 
         <section id="projects" class="section animate-on-scroll">
             <h2 class="section-title">Our Projects</h2>
+            <div class="premium-banner">
+                <p><i class="fas fa-star"></i> Click on a project to explore more details! <i class="fas fa-star"></i></p>
+            </div>
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
@@ -198,7 +201,7 @@
                     <div class="project-content">
                         <span class="project-badge">Live</span>
                         <h3>Cl0udCrypt for Google Drive</h3>
-                        <p>A Chrome extension that provides AES-256 encryption before uploading files to Google Drive. Your data remains private even if cloud storage is compromised.</p>
+                        <p>A Chrome extension that encrypt any files in AES-256 also upload the files to Google Drive. Your data remains private even if cloud storage is compromised.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">AES-256</span>
                             <span class="tech-tag">WebCrypto</span>
@@ -372,7 +375,12 @@
             </div>
         </section>
 
-        <section id="technology" class="section animate-on-scroll">
+        <section id="project-details" class="project-details-section" style="display: none;">
+            <h2 class="section-title">Project Description</h2>
+            <div class="project-description-content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+
             <h2 class="section-title">Technology Implemented</h2>
             <div class="tech-stack">
                 <div class="tech-item">
@@ -404,8 +412,9 @@
                     <p>Password-Based Key Derivation Function for secure key generation</p>
                 </div>
             </div>
+
+            <h2 class="section-title">Technical Deep Dive</h2>
             <div class="tech-details">
-                <h3>Technical Deep Dive</h3>
                 <div class="tech-accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
